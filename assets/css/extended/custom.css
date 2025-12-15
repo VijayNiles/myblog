@@ -221,15 +221,16 @@ button:hover,
     background: var(--entry);
 }
 
-/* Hide Disqus branding if desired */
+/* Hide Disqus branding */
 #disqus_thread .dsq-brlink {
     display: none !important;
 }
-/* Force all Disqus text to use theme colors */
+
+/* Disqus text colors for both modes */
 #disqus_thread * {
     color: var(--primary) !important;
 }
-/* Dark mode Disqus text */
-[data-theme="dark"] #disqus_thread * {
+
+.dark #disqus_thread * {
     color: #ffffff !important;
 }
