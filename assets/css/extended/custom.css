@@ -225,3 +225,7 @@ button:hover,
 #disqus_thread .dsq-brlink {
     display: none !important;
 }
+/* Force all Disqus text to use theme colors */
+#disqus_thread * {
+    color: var(--primary) !important;
+}
