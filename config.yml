@@ -3,9 +3,6 @@ title: Vijay Niles
 copyright: "© 2025 Vijay Niles"
 theme: [PaperMod]
 
-# Disqus comments configuration
-disqusShortname: "vijayniles"
-
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -56,6 +53,7 @@ params:
   env: production
   description: "Vijay Niles' Blog"
   author: Vijay Niles
+  disqusShortname: "vijayniles"
 
   defaultTheme: auto
   ShowShareButtons: true
