@@ -234,3 +234,61 @@ button:hover,
 .dark #disqus_thread * {
     color: #ffffff !important;
 }
+
+/* Newsletter Form Styling */
+.formkit-form {
+    margin: 3rem 0 2rem 0 !important;
+    padding: 2rem !important;
+    background: var(--entry) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    font-family: Garamond, 'Times New Roman', serif !important;
+}
+
+.formkit-header h2 {
+    color: var(--primary) !important;
+    font-family: Garamond, 'Times New Roman', serif !important;
+}
+
+.formkit-subheader {
+    color: var(--primary) !important;
+}
+
+.formkit-input {
+    background: var(--theme) !important;
+    color: var(--primary) !important;
+    border-color: var(--border) !important;
+    font-family: Garamond, 'Times New Roman', serif !important;
+}
+
+.formkit-submit {
+    background-color: #8B7355 !important;
+    font-family: Garamond, 'Times New Roman', serif !important;
+}
+
+.formkit-submit:hover {
+    background-color: #6d5a43 !important;
+}
+
+.formkit-guarantee {
+    color: var(--primary) !important;
+}
+
+.dark .formkit-form {
+    background: var(--entry) !important;
+}
+
+.dark .formkit-header h2,
+.dark .formkit-subheader,
+.dark .formkit-guarantee {
+    color: var(--primary) !important;
+}
+
+.dark .formkit-input {
+    background: var(--theme) !important;
+    color: var(--primary) !important;
+}
+
+.formkit-powered-by-convertkit-container {
+    display: none !important;
+}
