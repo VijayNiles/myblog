@@ -229,3 +229,7 @@ button:hover,
 #disqus_thread * {
     color: var(--primary) !important;
 }
+/* Dark mode Disqus text */
+[data-theme="dark"] #disqus_thread * {
+    color: #ffffff !important;
+}
