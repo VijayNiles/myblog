@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Career on Vijay Niles</title>
+    <link>http://localhost:34583/tags/career/</link>
+    <description>Recent content in Career on Vijay Niles</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en</language>
+    <copyright>2025 Vijay Niles</copyright>
+    <lastBuildDate>Sat, 13 Dec 2025 14:15:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:34583/tags/career/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Every Engineer Should Write</title>
+      <link>http://localhost:34583/posts/why-engineers-should-write/</link>
+      <pubDate>Sat, 13 Dec 2025 14:15:00 -0500</pubDate>
+      <guid>http://localhost:34583/posts/why-engineers-should-write/</guid>
+      <description>&lt;p&gt;I used to think writing was something you did &lt;em&gt;after&lt;/em&gt; you figured things out. Turns out, writing is how you figure things out.&lt;/p&gt;
+&lt;h2 id=&#34;the-thinking-tool&#34;&gt;The Thinking Tool&lt;/h2&gt;
+&lt;p&gt;When you sit down to explain a concept in writing, you quickly discover what you actually understand versus what you just thought you understood. The gaps become obvious. The fuzzy parts demand clarity.&lt;/p&gt;
+&lt;p&gt;This is why some of the best engineers I know are also prolific writers. They&amp;rsquo;re not necessarily better communicators—they&amp;rsquo;re better thinkers, and writing is their thinking tool.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

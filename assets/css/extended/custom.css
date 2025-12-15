@@ -1,0 +1,209 @@
+/* Custom Light Mode Colors and Typography */
+:root {
+    /* Light mode custom colors */
+    --theme: #FAF0E6;
+    --entry: #FAF0E6;
+    --primary: #2C2416;
+    --secondary: #2C2416;
+    --tertiary: #FAF0E6;
+    --content: #2C2416;
+    --hljs-bg: #F5EBE0;
+    --code-bg: #F5EBE0;
+    --border: #8B7355;
+}
+
+/* Apply Garamond font to everything */
+body,
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.profile .title,
+.nav,
+.logo,
+button,
+.button {
+    font-family: Garamond, 'Times New Roman', serif;
+    background: var(--theme) !important;
+    color: var(--primary);
+}
+
+body {
+    background: var(--theme) !important;
+    color: var(--primary);
+}
+
+/* Ensure proper contrast for light mode */
+.main {
+    background: var(--theme) !important;
+    color: var(--primary);
+}
+
+/* Fix sidebar/page background to match */
+#theme-toggle,
+.list,
+.page,
+html {
+    background: var(--theme) !important;
+}
+
+/* Home info text visibility */
+.home-info p,
+.home-info .entry-content {
+    color: var(--primary) !important;
+}
+
+/* Override first-entry spacing - this is the key! */
+.first-entry.home-info {
+    min-height: auto !important;
+    margin: 0 0 2rem 0 !important;
+    padding: 0 !important;
+}
+
+.home-info .entry-header {
+    margin-bottom: 0.5rem !important;
+}
+
+.home-info .entry-content {
+    margin: 0.5rem 0 !important;
+}
+
+.home-info .entry-footer {
+    margin: 0 !important;
+}
+
+/* Reduce top padding on homepage */
+.main.list {
+    padding-top: 1rem !important;
+}
+
+.post-entry {
+    background: var(--entry);
+    border: none !important;
+    margin-bottom: calc(var(--gap) / 2) !important;
+    padding: calc(var(--gap) / 2) !important;
+}
+
+.post-entry:first-of-type {
+    margin-top: 0 !important;
+}
+
+.post-content {
+    color: var(--content);
+}
+
+/* Links */
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: #8B7355;
+}
+
+/* Header */
+.header {
+    background: var(--theme);
+}
+
+/* Navigation */
+.nav a {
+    color: var(--primary);
+}
+
+/* Code blocks */
+code {
+    background: var(--code-bg);
+    color: var(--primary);
+}
+
+pre {
+    background: var(--hljs-bg) !important;
+}
+
+/* Buttons and interactive elements */
+button:hover,
+.button:hover {
+    background: #8B7355;
+    color: #FAF0E6;
+}
+
+/* Table of contents */
+.toc {
+    background: var(--entry);
+}
+
+/* Footer */
+.footer {
+    background: var(--theme);
+    color: var(--primary);
+}
+
+/* Search */
+#searchResults {
+    background: var(--entry);
+}
+
+/* Tags */
+.terms-tags a {
+    background: var(--entry);
+    color: var(--primary);
+}
+
+.terms-tags a:hover {
+    background: #8B7355;
+    color: #FAF0E6;
+}
+
+/* Post meta */
+.post-meta {
+    color: #5A4A3A;
+}
+
+/* Breadcrumbs */
+.breadcrumbs a {
+    color: var(--primary);
+}
+
+/* Share buttons */
+.share-buttons {
+    border: none !important;
+    background: var(--theme) !important;
+}
+
+.share-buttons a {
+    color: var(--primary);
+}
+
+.share-buttons a:hover {
+    color: #8B7355;
+}
+
+/* Pagination */
+.page-link:hover {
+    background: #8B7355;
+    color: #FAF0E6;
+}
+
+/* Dark mode: remove dark background bar from entry headers */
+[data-theme="dark"] .post-entry .entry-header,
+[data-theme="dark"] .entry-header h2 {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Make post metadata match title color in dark mode */
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .entry-footer {
+    color: var(--primary) !important;
+}
+
+/* Reading progress indicator */
+.reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: #8B7355;
+    width: 0%;
+    z-index: 9999;
+}
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AWS on Vijay Niles</title>
+    <link>http://localhost:34583/tags/aws/</link>
+    <description>Recent content in AWS on Vijay Niles</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en</language>
+    <copyright>2025 Vijay Niles</copyright>
+    <lastBuildDate>Sun, 14 Dec 2025 10:30:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:34583/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Production-Ready LLM Applications</title>
+      <link>http://localhost:34583/posts/building-production-llm-apps/</link>
+      <pubDate>Sun, 14 Dec 2025 10:30:00 -0500</pubDate>
+      <guid>http://localhost:34583/posts/building-production-llm-apps/</guid>
+      <description>&lt;p&gt;Large Language Models have transformed how we think about AI applications, but building production-ready systems requires more than just an API call to GPT-4. In this post, I&amp;rsquo;ll share some lessons learned from deploying LLM-powered applications at scale.&lt;/p&gt;
+&lt;h2 id=&#34;the-reality-check&#34;&gt;The Reality Check&lt;/h2&gt;
+&lt;p&gt;When you&amp;rsquo;re prototyping, it&amp;rsquo;s easy to get excited about the capabilities of modern LLMs. But production is a different beast. You need to think about latency, cost, reliability, and security—all while maintaining the quality that makes these models useful in the first place.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
