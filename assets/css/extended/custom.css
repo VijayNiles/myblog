@@ -207,36 +207,24 @@ button:hover,
     z-index: 9999;
 }
 
-/* Disqus Comments Styling */
+/* Disqus Comments Container Styling */
 #disqus_thread {
     margin-top: 2rem;
     padding: 1.5rem;
     border-radius: 8px;
-    background: var(--theme);
+    background: var(--entry);
     border: 1px solid var(--border);
+    min-height: 200px;
 }
 
-/* Dark mode adjustments */
+/* Dark mode adjustments for container */
 .dark #disqus_thread {
     background: var(--entry);
-}
-
-/* Hide Disqus branding */
-#disqus_thread .dsq-brlink {
-    display: none !important;
-}
-
-/* Disqus text colors for both modes */
-#disqus_thread * {
-    color: var(--primary) !important;
-}
-
-.dark #disqus_thread * {
-    color: #ffffff !important;
+    border-color: var(--border);
 }
 
 /* Newsletter Form Styling */
-.formkit-form {
+.seva-form.formkit-form {
     margin: 3rem 0 2rem 0 !important;
     padding: 2rem !important;
     background: var(--entry) !important;
@@ -245,50 +233,105 @@ button:hover,
     font-family: Garamond, 'Times New Roman', serif !important;
 }
 
-.formkit-header h2 {
+.seva-form .formkit-header h2 {
     color: var(--primary) !important;
     font-family: Garamond, 'Times New Roman', serif !important;
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
 }
 
-.formkit-subheader {
-    color: var(--primary) !important;
+.seva-form .formkit-subheader {
+    color: var(--secondary) !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.1rem !important;
 }
 
-.formkit-input {
+/* Make fields display inline */
+.seva-form .formkit-fields {
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+}
+
+.seva-form .formkit-field {
+    flex: 1 !important;
+}
+
+.seva-form .formkit-input {
+    width: 100% !important;
     background: var(--theme) !important;
     color: var(--primary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1rem !important;
+    font-family: Garamond, 'Times New Roman', serif !important;
+    font-size: 1rem !important;
+}
+
+.seva-form .formkit-input:focus {
+    outline: none !important;
     border-color: var(--border) !important;
-    font-family: Garamond, 'Times New Roman', serif !important;
+    box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.2) !important;
 }
 
-.formkit-submit {
-    background-color: #8B7355 !important;
+.seva-form .formkit-submit {
+    background-color: var(--border) !important;
+    color: var(--theme) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 2rem !important;
     font-family: Garamond, 'Times New Roman', serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
 }
 
-.formkit-submit:hover {
+.seva-form .formkit-submit:hover {
     background-color: #6d5a43 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3) !important;
 }
 
-.formkit-guarantee {
-    color: var(--primary) !important;
+.seva-form .formkit-guarantee {
+    color: var(--secondary) !important;
+    font-size: 0.9rem !important;
+    font-style: italic !important;
 }
 
-.dark .formkit-form {
+/* Dark mode adjustments */
+.dark .seva-form.formkit-form {
     background: var(--entry) !important;
 }
 
-.dark .formkit-header h2,
-.dark .formkit-subheader,
-.dark .formkit-guarantee {
+.dark .seva-form .formkit-header h2,
+.dark .seva-form .formkit-subheader,
+.dark .seva-form .formkit-guarantee {
     color: var(--primary) !important;
 }
 
-.dark .formkit-input {
+.dark .seva-form .formkit-input {
     background: var(--theme) !important;
     color: var(--primary) !important;
 }
 
-.formkit-powered-by-convertkit-container {
+/* Hide ConvertKit branding */
+.formkit-powered-by-convertkit-container,
+.formkit-powered-by,
+[data-element="branding"] {
     display: none !important;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 640px) {
+    .seva-form .formkit-fields {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+    
+    .seva-form .formkit-submit {
+        width: 100% !important;
+    }
 }
