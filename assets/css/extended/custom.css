@@ -207,3 +207,21 @@ button:hover,
     z-index: 9999;
 }
 
+/* Disqus Comments Styling */
+#disqus_thread {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: var(--theme);
+    border: 1px solid var(--border);
+}
+
+/* Dark mode adjustments */
+.dark #disqus_thread {
+    background: var(--entry);
+}
+
+/* Hide Disqus branding if desired */
+#disqus_thread .dsq-brlink {
+    display: none !important;
+}

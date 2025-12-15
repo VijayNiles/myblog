@@ -3,6 +3,7 @@ title: "About Me"
 layout: "single"
 url: "/about/"
 summary: "About Vijay Niles"
+disableComments: true
 ---
 
 # Hey, I'm Vijay 👋
