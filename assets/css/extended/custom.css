@@ -301,45 +301,45 @@ button:hover,
     font-style: italic !important;
 }
 
-/* Dark mode adjustments */
-.dark .seva-form.formkit-form {
+/* Dark mode adjustments - using correct PaperMod selector */
+[data-theme="dark"] .seva-form.formkit-form {
     background: var(--entry) !important;
 }
 
-.dark .seva-form .formkit-header {
+[data-theme="dark"] .seva-form .formkit-header {
     background: transparent !important;
 }
 
-.dark .seva-form .formkit-header h2 {
+[data-theme="dark"] .seva-form .formkit-header h2 {
     color: #ffffff !important;
     background: transparent !important;
 }
 
-.dark .seva-form .formkit-subheader {
+[data-theme="dark"] .seva-form .formkit-subheader {
     color: #ffffff !important;
 }
 
-.dark .seva-form .formkit-guarantee {
+[data-theme="dark"] .seva-form .formkit-guarantee {
     color: #ffffff !important;
 }
 
-.dark .seva-form .formkit-input {
+[data-theme="dark"] .seva-form .formkit-input {
     background: #ffffff !important;
     color: #000000 !important;
     border-color: var(--border) !important;
 }
 
-.dark .seva-form .formkit-input::placeholder {
+[data-theme="dark"] .seva-form .formkit-input::placeholder {
     color: #000000 !important;
     opacity: 1 !important;
 }
 
-.dark .seva-form .formkit-submit {
+[data-theme="dark"] .seva-form .formkit-submit {
     background-color: #ffffff !important;
     color: #000000 !important;
 }
 
-.dark .seva-form .formkit-submit:hover {
+[data-theme="dark"] .seva-form .formkit-submit:hover {
     background-color: #e0e0e0 !important;
 }
 
