@@ -16,3 +16,6 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Obsidian vault config (editor settings, not site content)
+.obsidian/
