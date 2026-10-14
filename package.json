@@ -1,0 +1,15 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "Vijay Niles' blog — Hugo static site using the PaperMod theme.",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server -D",
+    "build": "hugo --gc --minify",
+    "clean": "rm -rf public resources .hugo_build.lock",
+    "version": "hugo version"
+  },
+  "devDependencies": {
+    "hugo-extended": "0.146.0"
+  }
+}
