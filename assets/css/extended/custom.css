@@ -1,363 +1,337 @@
-/* Custom Light Mode Colors and Typography */
+/* =============================================================================
+   Brand theming — ported from the Kit landing page (go.vijayniles.com)
+   -----------------------------------------------------------------------------
+   Approach: override PaperMod's own CSS custom properties rather than fighting
+   individual selectors. PaperMod drives all surfaces off these variables, so
+   remapping them re-skins the whole site while leaving layout/structure intact.
+
+   Kit palette:
+     navy  #0f172a (slate-900)  — primary background
+     panel #1e293b (slate-800)  — cards / entries
+     text  #f8fafc              — body text
+     head  #fffef4              — headings (warm near-white)
+     muted #c0c6d5 / #aab2c3    — secondary text
+     accent#ff9900 (AWS orange) — links / buttons / highlights
+     accent-hover #b36b00
+   Fonts: Montserrat (UI + body), loaded in layouts/partials/extend_head.html
+   ============================================================================= */
+
+/* --- Design tokens ---------------------------------------------------------- */
 :root {
-    /* Light mode custom colors */
-    --theme: #FAF0E6;
-    --entry: #FAF0E6;
-    --primary: #2C2416;
-    --secondary: #2C2416;
-    --tertiary: #FAF0E6;
-    --content: #2C2416;
-    --hljs-bg: #F5EBE0;
-    --code-bg: #F5EBE0;
-    --border: #8B7355;
+    --accent: #ff9900;
+    --accent-hover: #b36b00;
+    --heading: #fffef4;
 }
 
-/* Apply Garamond font to everything */
+/* Light mode: light surfaces, same navy ink + orange accent so branding is
+   consistent across both themes. */
+:root {
+    --theme: #f8fafc;
+    --entry: #ffffff;
+    --primary: #0f172a;
+    --secondary: #475569;
+    --tertiary: #e2e8f0;
+    --content: #1e293b;
+    --code-bg: #eef2f7;
+    --code-block-bg: #0f172a;
+    --border: #dce1eb;
+}
+
+/* Dark mode: the Kit landing page look (default theme for this site). */
+:root[data-theme="dark"] {
+    --theme: #0f172a;
+    --entry: #1e293b;
+    --primary: #f8fafc;
+    --secondary: #aab2c3;
+    --tertiary: #334155;
+    --content: #dce1eb;
+    --code-bg: #1e293b;
+    --code-block-bg: #0b1120;
+    --border: #334155;
+}
+
+/* --- Typography ------------------------------------------------------------- */
+/* Montserrat everywhere PaperMod sets a font. Keep the system-font fallback. */
 body,
 h1, h2, h3, h4, h5, h6,
 .post-title,
+.entry-header,
 .profile .title,
-.nav,
-.logo,
 button,
-.button {
-    font-family: Garamond, 'Times New Roman', serif;
-    background: var(--theme) !important;
+input,
+textarea {
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Headings use the warm near-white and the bold weight from the Kit page. */
+.post-title,
+.entry-header h2,
+.post-single h1,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    color: var(--heading);
+    font-weight: 700;
+}
+
+/* In light mode headings should stay dark-navy for contrast. */
+:root:not([data-theme="dark"]) .post-title,
+:root:not([data-theme="dark"]) .entry-header h2,
+:root:not([data-theme="dark"]) .post-content h1,
+:root:not([data-theme="dark"]) .post-content h2,
+:root:not([data-theme="dark"]) .post-content h3,
+:root:not([data-theme="dark"]) .post-content h4 {
     color: var(--primary);
 }
 
-body {
-    background: var(--theme) !important;
-    color: var(--primary);
+/* --- Accent: links, highlights, interactive --------------------------------- */
+.post-content a,
+.first-entry .entry-content a,
+.footer a,
+.post-tags a:hover,
+.toc a:hover {
+    color: var(--accent);
 }
 
-/* Ensure proper contrast for light mode */
-.main {
-    background: var(--theme) !important;
-    color: var(--primary);
+.post-content a:hover {
+    color: var(--accent-hover);
 }
 
-/* Fix sidebar/page background to match */
-#theme-toggle,
-.list,
-.page,
-html {
-    background: var(--theme) !important;
+/* Entry title links highlight to the brand accent on hover. */
+.entry-header h2:hover,
+.post-entry:hover .entry-header h2 {
+    color: var(--accent);
 }
 
-/* Home info text visibility */
-.home-info p,
-.home-info .entry-content {
-    color: var(--primary) !important;
-}
-
-/* Override first-entry spacing - this is the key! */
-.first-entry.home-info {
-    min-height: auto !important;
-    margin: 0 0 2rem 0 !important;
-    padding: 0 !important;
-}
-
-.home-info .entry-header {
-    margin-bottom: 0.5rem !important;
-}
-
-.home-info .entry-content {
-    margin: 0.5rem 0 !important;
-}
-
-.home-info .entry-footer {
-    margin: 0 !important;
-}
-
-/* Reduce top padding on homepage */
-.main.list {
-    padding-top: 1rem !important;
-}
-
-.post-entry {
-    background: var(--entry);
-    border: none !important;
-    margin-bottom: calc(var(--gap) / 2) !important;
-    padding: calc(var(--gap) / 2) !important;
-}
-
-.post-entry:first-of-type {
-    margin-top: 0 !important;
-}
-
-.post-content {
-    color: var(--content);
-}
-
-/* Links */
-a {
-    color: var(--primary);
-}
-
-a:hover {
-    color: #8B7355;
-}
-
-/* Header */
-.header {
-    background: var(--theme);
-}
-
-/* Navigation */
-.nav a {
-    color: var(--primary);
-}
-
-/* Code blocks */
-code {
-    background: var(--code-bg);
-    color: var(--primary);
-}
-
-pre {
-    background: var(--hljs-bg) !important;
-}
-
-/* Buttons and interactive elements */
-button:hover,
-.button:hover {
-    background: #8B7355;
-    color: #FAF0E6;
-}
-
-/* Table of contents */
-.toc {
-    background: var(--entry);
-}
-
-/* Footer */
-.footer {
-    background: var(--theme);
-    color: var(--primary);
-}
-
-/* Search */
-#searchResults {
-    background: var(--entry);
-}
-
-/* Tags */
+/* Tag chips */
+.post-tags a,
 .terms-tags a {
-    background: var(--entry);
-    color: var(--primary);
+    border: 1px solid var(--border);
 }
 
+.post-tags a:hover,
 .terms-tags a:hover {
-    background: #8B7355;
-    color: #FAF0E6;
+    background: var(--accent);
+    color: var(--theme);
+    border-color: var(--accent);
 }
 
-/* Post meta */
-.post-meta {
-    color: #5A4A3A;
+/* Pagination + buttons adopt the accent on hover */
+.page-link:hover,
+.button:hover,
+button:hover {
+    background: var(--accent);
+    color: var(--theme);
 }
 
-/* Breadcrumbs */
-.breadcrumbs a {
-    color: var(--primary);
+/* Code copy button accent */
+.copy-code:hover {
+    background: var(--accent);
+    color: var(--theme);
 }
 
-/* Share buttons */
-.share-buttons {
-    border: none !important;
-    background: var(--theme) !important;
-}
-
-.share-buttons a {
-    color: var(--primary);
-}
-
-.share-buttons a:hover {
-    color: #8B7355;
-}
-
-/* Pagination */
-.page-link:hover {
-    background: #8B7355;
-    color: #FAF0E6;
-}
-
-/* Dark mode: remove dark background bar from entry headers */
-[data-theme="dark"] .post-entry .entry-header,
-[data-theme="dark"] .entry-header h2 {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Make post metadata match title color in dark mode */
-[data-theme="dark"] .post-meta,
-[data-theme="dark"] .entry-footer {
-    color: var(--primary) !important;
-}
-
-/* Reading progress indicator */
+/* --- Reading progress indicator (unchanged behavior, brand color) ----------- */
 .reading-progress-bar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 5px;
-    background: #8B7355;
+    height: 4px;
+    background: var(--accent);
     width: 0%;
     z-index: 9999;
 }
 
-/* Disqus Comments Container Styling */
+/* --- Disqus comments container ---------------------------------------------- */
 #disqus_thread {
     margin-top: 2rem;
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius);
     background: var(--entry);
     border: 1px solid var(--border);
     min-height: 200px;
 }
 
-/* Dark mode adjustments for container */
-.dark #disqus_thread {
-    background: var(--entry);
-    border-color: var(--border);
-}
-
-/* Newsletter Form Styling */
+/* =============================================================================
+   Newsletter form (Kit / ConvertKit embed)
+   Restyled to match the Kit landing page: orange submit button, navy-aware
+   inputs. Layout rules kept; colors driven by the brand tokens above.
+   ============================================================================= */
 .seva-form.formkit-form {
-    margin: 3rem 0 2rem 0 !important;
-    padding: 2rem !important;
-    background: var(--entry) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
-    font-family: Garamond, 'Times New Roman', serif !important;
+    margin: 3rem 0 2rem 0;
+    padding: 2rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Use --primary (navy in light, near-white in dark) so the title stays
+   readable in both themes. --heading is near-white, which disappears on the
+   white light-mode panel. */
 .seva-form .formkit-header h2 {
-    color: var(--primary) !important;
-    font-family: Garamond, 'Times New Roman', serif !important;
-    font-size: 2rem !important;
-    margin-bottom: 1rem !important;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: transparent;
+}
+
+/* In dark mode specifically, use the warm heading white to match other titles. */
+:root[data-theme="dark"] .seva-form .formkit-header h2 {
+    color: var(--heading);
 }
 
 .seva-form .formkit-subheader {
-    color: var(--secondary) !important;
-    margin-bottom: 1.5rem !important;
-    font-size: 1.1rem !important;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
-/* Make fields display inline */
+/* Inline field layout */
 .seva-form .formkit-fields {
-    display: flex !important;
-    gap: 0.75rem !important;
-    align-items: center !important;
-    margin-bottom: 1rem !important;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .seva-form .formkit-field {
-    flex: 1 !important;
+    flex: 1;
 }
 
 .seva-form .formkit-input {
-    width: 100% !important;
-    background: var(--theme) !important;
-    color: var(--primary) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 4px !important;
-    padding: 0.75rem 1rem !important;
-    font-family: Garamond, 'Times New Roman', serif !important;
-    font-size: 1rem !important;
+    width: 100%;
+    background: var(--theme);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.seva-form .formkit-input::placeholder {
+    color: var(--secondary);
 }
 
 .seva-form .formkit-input:focus {
-    outline: none !important;
-    border-color: var(--border) !important;
-    box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.2) !important;
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.25);
 }
 
+/* Submit button — AWS orange, matching the Kit page button exactly */
 .seva-form .formkit-submit {
-    background-color: var(--border) !important;
-    color: var(--theme) !important;
-    border: none !important;
-    border-radius: 4px !important;
-    padding: 0.75rem 2rem !important;
-    font-family: Garamond, 'Times New Roman', serif !important;
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-    transition: all 0.2s ease !important;
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
 .seva-form .formkit-submit:hover {
-    background-color: #6d5a43 !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3) !important;
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
 }
 
 .seva-form .formkit-guarantee {
-    color: var(--secondary) !important;
-    font-size: 0.9rem !important;
-    font-style: italic !important;
-}
-
-/* Dark mode adjustments - using correct PaperMod selector */
-[data-theme="dark"] .seva-form.formkit-form {
-    background: var(--entry) !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-header {
-    background: transparent !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-header h2 {
-    color: #ffffff !important;
-    background: transparent !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-subheader {
-    color: #ffffff !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-guarantee {
-    color: #ffffff !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-input {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: var(--border) !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-input::placeholder {
-    color: #000000 !important;
-    opacity: 1 !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-submit {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .seva-form .formkit-submit:hover {
-    background-color: #e0e0e0 !important;
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 /* Hide ConvertKit branding */
 .formkit-powered-by-convertkit-container,
 .formkit-powered-by,
 [data-element="branding"] {
-    display: none !important;
+    display: none;
 }
 
-/* Responsive layout for mobile */
+/* Responsive: stack the form on small screens */
 @media (max-width: 640px) {
     .seva-form .formkit-fields {
-        flex-direction: column !important;
-        gap: 0.75rem !important;
+        flex-direction: column;
+        gap: 0.75rem;
     }
-    
+
     .seva-form .formkit-submit {
-        width: 100% !important;
+        width: 100%;
     }
+}
+
+/* =============================================================================
+   Header CTA — "Join the course waitlist!" menu item
+   -----------------------------------------------------------------------------
+   Enabled per menu item via `params.cta: true` in config.yml, which the
+   header.html override turns into a `.menu-cta` class. Styled as a standout:
+   orange (not bold) in both themes, with a subtle finite nudge on the 👉.
+   The emoji/text spacing is handled in config (the `pre` value's non-breaking
+   spaces), which is more reliable than targeting the emoji text node in CSS.
+   ============================================================================= */
+#menu .menu-cta span {
+    color: var(--accent);
+    transition: color 0.2s ease;
+    /* inline-block is required for transform/translate to take effect — the
+       menu span is inline by default, where transforms are ignored. */
+    display: inline-block;
+    transform-origin: center;
+    /* Periodic bounce: a short wiggle, then a few seconds of rest, on repeat.
+       Noticeable without being a relentless never-stopping animation. */
+    animation: cta-bounce 4s ease-in-out infinite;
+}
+
+#menu .menu-cta:hover span {
+    color: var(--accent-hover);
+}
+
+/* Hide PaperMod's external-link arrow icon on the CTA — the orange already
+   signals it's special, and the arrow reads as clutter. The link still opens
+   in a new tab (target/rel are set in the header.html template). */
+#menu .menu-cta svg {
+    display: none;
+}
+
+/* The bounce happens in the first ~1s of each 4s cycle, then rests. */
+@keyframes cta-bounce {
+    0%   { transform: translateY(0); }
+    8%   { transform: translateY(-5px); }
+    16%  { transform: translateY(0); }
+    24%  { transform: translateY(-3px); }
+    32%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+/* Accessibility: respect users who have asked for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    #menu .menu-cta span {
+        animation: none;
+    }
+}
+
+/* =============================================================================
+   Homepage intro spacing
+   -----------------------------------------------------------------------------
+   PaperMod's .first-entry forces `min-height: 320px` + `justify-content: center`,
+   which on the homepage leaves a large empty gap between the "Welcome" intro
+   and the first post tile. Scope the fix to the .home-info variant so real
+   post first-entries elsewhere keep PaperMod's default sizing.
+   ============================================================================= */
+.first-entry.home-info {
+    min-height: auto;
+    justify-content: flex-start;
+    margin: var(--gap) 0;
+}
+
+.home-info .entry-content {
+    margin: 0.5rem 0 0 0;
 }
