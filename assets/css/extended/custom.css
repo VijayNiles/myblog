@@ -86,6 +86,15 @@ textarea {
     color: var(--primary);
 }
 
+/* Bold body text in dark mode: weight contrast alone reads weakly on dark
+   backgrounds, so brighten strong/bold text to the heading white. This makes
+   emphasized terms stand out from the dimmer body copy (--content) using
+   brightness, not a new color. Dark mode only; light mode is unchanged. */
+:root[data-theme="dark"] .post-content strong,
+:root[data-theme="dark"] .post-content b {
+    color: var(--heading);
+}
+
 /* --- Accent: links, highlights, interactive --------------------------------- */
 .post-content a,
 .first-entry .entry-content a,
@@ -118,10 +127,13 @@ textarea {
     border-color: var(--accent);
 }
 
-/* Pagination + buttons adopt the accent on hover */
+/* Pagination + action buttons adopt the accent on hover.
+   Exclude the theme (light/dark) toggle: it's a mode switch, not a call to
+   action, so the orange brand accent would be misleading there. It keeps
+   PaperMod's own neutral toggle styling. */
 .page-link:hover,
 .button:hover,
-button:hover {
+button:not(#theme-toggle):hover {
     background: var(--accent);
     color: var(--theme);
 }
@@ -334,4 +346,63 @@ button:hover {
 
 .home-info .entry-content {
     margin: 0.5rem 0 0 0;
+}
+
+/* =============================================================================
+   Mobile nav layout + spacing (≤768px)
+   -----------------------------------------------------------------------------
+   Two problems on phones, both from the nav:
+   1. PaperMod makes #menu horizontally scrollable (overflow-x:auto; nowrap),
+      so the long "Join the course waitlist!" CTA pushes the other links
+      off-screen.
+   2. PaperMod sets `.nav { line-height: 60px }` for a single-row desktop bar.
+      Once the nav stacks into three rows on mobile (logo / CTA / links), that
+      60px line-height inflates each row and creates large, uneven gaps.
+
+   Fix: stack the nav cleanly and control the vertical rhythm with an explicit
+   8px-based spacing scale (per common mobile design-system guidance), plus a
+   small, deliberate top/side padding so content doesn't hit the screen edge.
+   Desktop (>768px) is untouched.
+   ============================================================================= */
+@media screen and (max-width: 768px) {
+    /* Reset the desktop 60px line-height so stacked rows size to their content,
+       and give the header tidy, edge-safe padding (8px scale). */
+    .nav {
+        line-height: 1.4;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px var(--gap) 8px;
+    }
+
+    /* Logo row: remove the auto vertical margins that relied on line-height. */
+    .nav .logo {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Menu: wrap instead of scroll, sit directly under the logo with an even
+       gap, and use a consistent 8px row/column rhythm. */
+    #menu {
+        margin: 12px 0 0 0;
+        padding: 0;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        white-space: normal;
+        row-gap: 8px;
+        column-gap: 16px;
+    }
+
+    /* CTA on its own full-width line (first <li>, pinned via weight:-1).
+       Small symmetric vertical padding so it reads as visually centered
+       between the logo and the nav links (and gives the bounce headroom). */
+    #menu li:first-child {
+        flex-basis: 100%;
+        padding: 4px 0;
+    }
+
+    /* PaperMod spaces items with margin-inline-start on li+li; we use the
+       flex column-gap instead, so clear those margins for even spacing. */
+    #menu li + li {
+        margin-inline-start: 0;
+    }
 }
