@@ -30,6 +30,14 @@ languages:
       series: series
     menu:
       main:
+        # Course waitlist CTA — negative weight keeps it first (left of Posts).
+        # pre: emoji nudge; params.cta flags it for standout styling + new-tab.
+        - name: Join the course waitlist!
+          url: https://go.vijayniles.com/email-list
+          weight: -1
+          pre: "👉&nbsp;&nbsp;"
+          params:
+            cta: true
         - name: Posts
           url: posts/
           weight: 1
@@ -55,7 +63,7 @@ params:
   author: Vijay Niles
   disqusShortname: "vijayniles"
 
-  defaultTheme: auto
+  defaultTheme: dark
   ShowShareButtons: true
   ShareButtons: ["linkedin", "reddit", "x", "email"]
   ShowReadingTime: true
@@ -99,11 +107,13 @@ params:
 
   assets:
     disableHLJS: true
-  #     favicon: "<link / abs url>"
-  #     favicon16x16: "<link / abs url>"
-  #     favicon32x32: "<link / abs url>"
-  #     apple_touch_icon: "<link / abs url>"
-  #     safari_pinned_tab: "<link / abs url>"
+    # Favicons live in static/ (copied to the site root at build time).
+    # No leading slash: PaperMod runs these through absURL, so a relative value
+    # resolves against the active base (localhost in dev, the domain in prod).
+    favicon: "favicon.ico"
+    favicon16x16: "favicon-16x16.png"
+    favicon32x32: "favicon-32x32.png"
+    apple_touch_icon: "apple-touch-icon.png"
 
   # cover:
   #     hidden: true # hide everywhere but not in structured data
